@@ -4,6 +4,8 @@
 #include <string>
 #include <memory>
 #include <chrono>
+#include <algorithm>
+#include <iterator>
 
 #include <boost/python.hpp>
 #include "boost/python/numpy.hpp"
@@ -38,6 +40,9 @@ public:
         this->engine = new retinanet::Engine(engine_path);
         this->inputSize = engine->getInputSize();
         this->num_det = engine->getMaxDetections();
+
+        for (std::vector<int>::const_iterator i = this->inputSize.begin(); i != this->inputSize.end(); ++i)
+            std::cout << "getInputSize:" << *i << ' ';
     }
 
     vector<float> preprocess_image(cv::Mat &image){
