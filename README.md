@@ -37,3 +37,12 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CUDA_FLAGS="--expt-extended-lambda -st
 ```bash
 python3 example/inference.py
 ```
+
+### Convert weights
+
+You can get onnx weights from this [link](https://yadi.sk/d/oBk0NIInBrA-pQ). Weights were obtained by training on the semantic drone dataset https://www.tugraz.at/index.php?id=22387
+To convert weights, use [cpp api](https://github.com/NVIDIA/retinanet-examples/tree/master/extras/cppapi).
+
+```bash
+./export retinanet_rn50.onnx retinanet_rn50.plan
+```
